@@ -1,15 +1,15 @@
 # COMFUZZ
-This is a compiler testing framework
 
-
+This is a compiler testing framework \
+execute Parse optimization
 
 ## BugList for JS
 
-| No.  | Compiler | Version | Link | Status | Contributor | Description | module |
-| ---- | -------- | ------- | ---- | ------ | ----------- | ----------- | ------ |
-| 1    |          |         |      |        |             |             |        |
-
-
+| No. |  Compiler   |                                                          Version                                                           |                                                  Link                                                   |  Status  |                                   Contributor                                    |                                                                 Description                                                                 | module  |
+|:---:|:-----------:|:--------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------:|:--------:|:--------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|:-------:|
+|  1  | Jerryscript | Jerryscript([fea10bb](https://github.com/jerryscript-project/jerryscript/commit/fea10bb7e3ac1f5e8c092d2e8b6c9e39256f56e3)) | [A question about Uint8Array operation](https://github.com/jerryscript-project/jerryscript/issues/5007) |  Fixed   |                       [Yi Wen](https://github.com/YiWen-y)                       |                                       jerryscript abnormally replace the first element of view with 0                                       | execute |
+|  2  | Jerryscript | Jerryscript([6fe763f](https://github.com/jerryscript-project/jerryscript/commit/6fe763f1912c3ef82ec2ca31c40f186dde9c5a57)) |     [Array concatenation exception](https://github.com/jerryscript-project/jerryscript/issues/5026)     | Verified | [Yi Wen](https://github.com/YiWen-y) & [Fan Zhenye](https://github.com/AidPaike) |                                 about array literal handling which looks like it deleted all the vacancies                                  | execute |
+|  3  | Jerryscript | Jerryscript([6fe763f](https://github.com/jerryscript-project/jerryscript/commit/6fe763f1912c3ef82ec2ca31c40f186dde9c5a57)) | [A question about Array.prototype.sort](https://github.com/jerryscript-project/jerryscript/issues/5025) | Verified | [Yi Wen](https://github.com/YiWen-y) & [Fan Zhenye](https://github.com/AidPaike) | The latest spec clarifies that NaN return value of the comparefn should be changed to +0.JerryScript hasn't implemented the latest spec yet | execute |
 
 ## BugList for Java
 
@@ -19,4 +19,3 @@ This is a compiler testing framework
 | 2    | OpenJ9-JDK8&JDK11 | jdk8u332-b02&jdk-11.0.15+1 | [OpenJ9_2](https://github.com/eclipse-openj9/openj9/issues/14873) | Verified&Fixed | [Yuan Wang](https://github.com/YuanWangC) | Wrong initialization to the cause of IllegalStateException in Throwable.initCause(). | jre    |
 | 3    |                   |                            |                                                              |                |                                           |                                                              |        |
 | 4    |                   |                            |                                                              |                |                                           |                                                              |        |
-
