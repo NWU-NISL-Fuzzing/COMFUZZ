@@ -1,7 +1,6 @@
 # COMFUZZ
 
-This is a compiler testing framework \
-execute Parse optimization
+This is a compiler testing framework
 
 ## BugList for JS
 
