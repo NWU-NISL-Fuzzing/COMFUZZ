@@ -41,3 +41,6 @@ You can use the following step-by-step instructions to run COMFUZZ:
 ```python /root/COMFUZZ/src/mutation.py```
 
 
+
+## Main Results
+The main results of our work is a [list of bugs](https://github.com/NWU-NISL-Fuzzing/COMFUZZ/blob/main/docs/Bug-List.md) exposed by COMFUZZ.
