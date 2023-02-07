@@ -1,6 +1,6 @@
 # Identified Bugs
 This document presents the bugs exposed by COMFUZZ. As the time of paper submission, we have reported 33 unique bugs for different JS and Java compilers. 
-Of all reported bugs, 29 bugs have been confirmed, and 22 have been fixed. We list all our reported bugs by giving two bug lists for [JS engines](#comfuzz-exposed-bugs-for-js-engines) and [JVMs](comfuzz-exposed-bugs-for-jvms).
+Of all reported bugs, 29 bugs have been confirmed, and 22 have been fixed. We list all our reported bugs by giving two bug lists for [JS engines](#comfuzz-exposed-bugs-for-js-engines) and [JVMs](#comfuzz-exposed-bugs-for-jvms).
 
 
 ## COMFUZZ-exposed Bugs for JS Engines
