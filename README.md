@@ -34,7 +34,7 @@ You can use the following step-by-step instructions to run COMFUZZ:
 ### Step1. Generate test program:
 ```python /root/COMFUZZ/src/step1_generator.py```
 ### Step2. Build the seed pool:
-'''python /root/COMFUZZ/src/step2_init.py```
+```python /root/COMFUZZ/src/step2_init.py```
 ### Step3. Differential testing:
 ```python /root/COMFUZZ/src/harness.py```
 ### Step4. Mutation:
