@@ -1,0 +1,3 @@
+[submodule "COMFUZZ_Java"]
+	path = COMFUZZ_Java
+	url = git://github.com/weucode/COMFUZZ_Java.git
