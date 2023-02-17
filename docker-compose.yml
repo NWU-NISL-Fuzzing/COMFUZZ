@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+
+  comfuzz_container_service:
+    image: comfuzz_docker_compose_image:nano
+    container_name: comfuzz_container
+    depends_on:
+      - "mysql_container_service"
+    volumes:
+      - ./sharedir:/root/Comfuzz/sharedir
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    #保持容器运行
+    tty: true
+    restart: always
+    privileged: true
+    # network_mode: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              # count: 1
+              capabilities: [gpu]
+    ports:
+      - "10349:22"
+    # volumes:
+    #   - [直接使用宿主机的本地路径]:/var/lib/mysql
+
+  mysql_container_service:
+    restart: always
+    image: mysql:5.7.36
+    container_name: comfuzz_mysql_container
+    volumes:
+      # - ./mysql/datadir:/var/lib/mysql
+      # - ./mysql/conf/my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - ./mysql/source:/docker-entrypoint-initdb.d
+    environment:
+      - "MYSQL_ROOT_PASSWORD=mysql123"
+      - "MYSQL_DATABASE=mydb"
+      - "TZ=Asia/Shanghai"
+    ports:
+      - "33069:3306"
