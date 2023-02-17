@@ -21,7 +21,7 @@ COPY ./ $COMFUZZ
 # js
 ENV NODE_PATH /usr/lib/node_modules/
 LABEL key="value13"
-ADD ["COMFUZZ_js/data/jsvu.tar.gz","/root/"]
+ADD ["./COMFUZZ_js/data/jsvu.tar.gz","/root/"]
 
 # java
 ENV COMFUZZ_Java $COMFUZZ/COMFUZZ_Java
