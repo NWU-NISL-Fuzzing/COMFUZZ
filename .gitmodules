@@ -1,3 +1,6 @@
 [submodule "COMFUZZ_Java"]
 	path = COMFUZZ_Java
 	url = git://github.com/weucode/COMFUZZ_Java.git
+[submodule "COMFUZZ_js"]
+	path = COMFUZZ_js
+	url = git@github.com:AidPaike/comfuzz_js.git
