@@ -3,11 +3,10 @@ FROM 17604768805/comfuzz_env
 # LABEL 备注信息
 LABEL version="1.0"
 LABEL description="comfuzz"
-DEBIAN_FRONTEND=noninteractive
+#DEBIAN_FRONTEND=noninteractive
 
 #
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
-RUN ln -s /usr/bin/python3.8 /usr/bin/python
 RUN python -m pip install --no-cache-dir --upgrade pip
 RUN locale-gen
 ENV LANG zh_CN.UTF-8
