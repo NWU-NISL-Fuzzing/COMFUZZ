@@ -17,18 +17,43 @@ You can use the following step-by-step instructions to run COMFUZZ:
 
 ## Setup
 ### 1.1 Load the Docker Image
-After downloading the [docker image](https://zenodo.org/record/7602317), using below commands to load the docker image on the host machine:
-```
-docker exec -it comfuzz_container bash
-```
-### 1.2 Setup Environmental Parameters
-After improting the docker container, using the following command to setup the environmental variable before executing COMFUZZ:
-```
-bash /root/Comfort_all/initialize.sh
-```
-This shell script will also create MySql databases used for differential testing and mutation.
+0.Pre-setting
 
+```
+export DOCKER_CLIENT_TIMEOUT=500
+export COMPOSE_HTTP_TIMEOUT=500
+```
 
+1.Download the whole project.
+
+```
+git clone https://github.com/NWU-NISL-Fuzzing/COMFUZZ.git
+
+git submodule update --init --recursive
+```
+
+2.Run the docker-compose.yml.
+
+```
+docker-compose up -d
+```
+
+3.Enter into code docker.
+
+```
+docker exec -it comfuzz_container /bin/bash
+```
+
+### 1.2 Basic tools for COMFUZZ_Java
+
+1.A zip file of JVM engines are stored in `/root`, you can unzip the engines, this step will spend about 60 min. If you want to use other versions of JVMs, save them in `/root/jvm`.
+
+```
+cd /root
+unzip -q jvm_20230216.zip
+```
+
+2.The pre-trained model can be found in `$COMFUZZ_Java/data/model`, if the unzip process fail, please download from [this link](https://zenodo.org/record/7602317) again.
 
 ## Run
 
@@ -38,10 +63,29 @@ Some arguments are designed to specify some details in COMFUZZ, and you can use 
 
 ### 2.1 Run Automatically
 
-Here is an instruction that can run COMFUZZ  automatically:
+Here is an instruction that can run COMFUZZ  automatically.
+
+##### 2.1.1 COMFUZZ_JS
+
+To facilitate testing, COMFUZZ provides quick-run command：
 
 ```
-cd workline
+cd COMFUZZ_js/workline
+python3 main.py
+```
+
+If you want to see how the overall process works：
+
+```
+python3 main.py --enrich_limit_num=10 --loop_times=5 --clean_project
+```
+
+For more details, you can use python3 main.py --help to see what this parameter means.
+
+##### 2.1.2 COMFUZZ_Java
+
+```
+cd COMFUZZ_Java/workline
 python main.py
 ```
 
