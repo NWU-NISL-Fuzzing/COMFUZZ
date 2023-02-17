@@ -19,7 +19,6 @@ You can use the following step-by-step instructions to run COMFUZZ:
 ### 1.1 Load the Docker Image
 After downloading the [docker image](https://zenodo.org/record/7602317), using below commands to load the docker image on the host machine:
 ```
-Commands that how to load docker image.
 docker exec -it comfuzz_container bash
 ```
 ### 1.2 Setup Environmental Parameters
