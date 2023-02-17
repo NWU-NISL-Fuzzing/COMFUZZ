@@ -24,11 +24,13 @@ services:
     ports:
       - "10349:22"
     # TODO:update ports
+    links:
+      - comfuzz_mysql_container:comfuzz_mysql
 
   mysql_container_service:
     restart: always
     # TODO: update mysql image url
-    image: mysql:5.7.36
+    image: 17604768805/comfuzz_mysql
     container_name: comfuzz_mysql_container
     volumes:
       - ./mysql/source:/docker-entrypoint-initdb.d
