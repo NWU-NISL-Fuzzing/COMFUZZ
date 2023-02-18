@@ -38,7 +38,7 @@ docker exec -it comfuzz_container /bin/bash
 ```
 
 
-### 2 Additional preliminaries for testing JVM compilers
+### 2 Additional Preliminaries for Testing JVM Compilers
 In order to save the importing time for the docker container, we compressed the configured JVM compilers and the pre-trained model. You can use the following instructions to decompress them and put them in the expected directories.
 
 **2.1 Decompress the JVM compilers** 
@@ -62,10 +62,6 @@ cd /root/COMFUZZ/COMFUZZ_Java/data/model
 unzip -q checkpoint-400000.zip
 ```
 
-Here are two ways to run COMFUZZ: one automatically runs the whole procession, and another is to run step by step.
-
-Some arguments are designed to specify some details in COMFUZZ, and you can use python `main.py --help` to know the meaning of arguments.
-
 ## Run
 
 
@@ -80,7 +76,7 @@ cd COMFUZZ_js/workline
 python3 main.py --enrich_limit_num=10 --loop_times=5 --clean_project
 ```
 
-The parameter `enrich_limit_num` controls expand the initial data set， `loop_times` controls the iterative number during testing, `clean_project` means cleaing the data in the database. We also provide many configurable parameters for customized execution. You can use `python3 main.py --help` to see what these parameters mean.
+The parameter `enrich_limit_num` controls the number of tese cases in the seed pool (we set to 10 for demonstration)， `loop_times` controls the iterative number during testing, `clean_project` means cleaing the data in the database. We also provide many configurable parameters for customized execution. You can use `python3 main.py --help` to see what these parameters mean.
 
 
 ##### 1.2 Testing JVM Compilers
