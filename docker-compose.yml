@@ -22,14 +22,12 @@ services:
             - driver: nvidia
               capabilities: [ gpu ]
     ports:
-      - "10349:22"
-    # TODO:update ports
+      - "10341:22"
     links:
-      - comfuzz_mysql_container:comfuzz_mysql
+      - mysql_container_service:comfuzz_mysql
 
   mysql_container_service:
     restart: always
-    # TODO: update mysql image url
     image: 17604768805/comfuzz_mysql
     container_name: comfuzz_mysql_container
     volumes:
@@ -39,5 +37,4 @@ services:
       - "MYSQL_DATABASE=mydb"
       - "TZ=Asia/Shanghai"
     ports:
-      # TODO:update mysql ports
-      - "33069:3306"
+      - "33061:3306"

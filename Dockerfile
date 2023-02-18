@@ -19,17 +19,18 @@ ENV COMFUZZ /root/Comfuzz
 COPY ./ $COMFUZZ
 
 # js
+
 ENV NODE_PATH /usr/lib/node_modules/
 LABEL key="value13"
-ADD ["./COMFUZZ_js/data/jsvu.tar.gz","/root/"]
+#ADD ["jsvu.tar.gz","/root/"]
 
 # java
 ENV COMFUZZ_Java $COMFUZZ/COMFUZZ_Java
 RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/generate_tools && jar xvf Dependencies.zip'
-RUN /bin/sh -c 'cd $COMFUZZ_Java/data/model && jar xvf checkpoint-400000.zip'
-RUN /bin/sh -c 'cd $COMFUZZ_Java/generate_tools/GenerateTestcases && mvn install'
-RUN /bin/sh -c 'cd $COMFUZZ_Java/mutate_tools/MutateByReplaceAPI && mvn install'
-RUN /bin/sh -c 'cd $COMFUZZ_Java/mutate_tools/MutateByReplaceVar && mvn install'
+RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/data/model && jar xvf checkpoint-400000.zip'
+RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/generate_tools/GenerateTestcases && mvn install'
+RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/mutate_tools/MutateByReplaceAPI && mvn install'
+RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/mutate_tools/MutateByReplaceVar && mvn install'
 
 # workdir
 WORKDIR $COMFUZZ

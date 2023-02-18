@@ -135,5 +135,3 @@ This step will mutate testcases by two mutation methods: general-purpose mutatio
 python step4_mutation.py
 ```
 
-## Main Results
-The main results of our work is a [list of bugs](https://github.com/NWU-NISL-Fuzzing/COMFUZZ/blob/main/docs/Bug-List.md) exposed by COMFUZZ.
