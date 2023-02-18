@@ -5,100 +5,100 @@ COMFUZZ is a compiler fuzzing framework that combining generative and mutation t
 
 ## Docker Image
 
-We provide a [Docker image](https://zenodo.org/record/7602317) to run "out of box". The docker image was tested on a host machine running Ubuntu 18.04.
-The docker image contains the following scripts for running COMFUZZ:
+We provide a [Docker image](https://zenodo.org/record/7602317) to [run "out of box"](#run). The docker image was tested on a host machine running Ubuntu 18.04.
+We provide two ways to execute COMFUZZ: one is the [Quick Run](#1-quick-run); the other is to [Run Step-by-Step](#2-run-step-by-step) with the following scripts:
 
 * [step1_generator.py](): the script that generates test programs according to historical test programs.
 * [step2_init.py](): the script that builds the initial seed pool.
 * [step3_harness.py](): the script that performs the differential testing on target compilers.
 * [step4_mutation.py](): the script that mutates the interesting test cases for focused and intensive testing.
 
-You can use the following step-by-step instructions to run COMFUZZ:
 
 ## Setup
-### 1.1 Load the Docker Image
-0.Pre-setting
+
+### 1 Load the Docker Image
+
+1.1 Using the following commands to setup the environment variables to aviod timeout:
 
 ```
 export DOCKER_CLIENT_TIMEOUT=500
 export COMPOSE_HTTP_TIMEOUT=500
 ```
 
-1.Download the whole project.
-
-
-2.Run the docker-compose.yml.
+1.2 Using the following command to run the ```./docker-compose.yml``` for starting the docker image .
 
 ```
 docker-compose up -d
 ```
 
-3.Enter into code docker.
+1.3 Run the following command to import docker container.
 
 ```
 docker exec -it comfuzz_container /bin/bash
 ```
 
-### 1.2 Basic tools for COMFUZZ_Java
 
-1.A zip file of JVM engines are stored in `/root`, you can unzip the engines, this step will spend about 60 min. If you want to use other versions of JVMs, save them in `/root/jvm`.
+### 2 Additional preliminaries for testing JVM compilers
+In order to save the importing time for the docker container, we compressed the configured JVM compilers and the pre-trained model. You can use the following instructions to decompress them and put them in the expected directories.
+
+**2.1 Decompress the JVM compilers** 
+
+The compressed file is named ```jvm_20230216.zip``` and save at the path ```/root```. You can use the following commands to decompress it (require around 60 minutes):
 
 ```
 cd /root
 unzip -q jvm_20230216.zip
 ```
 
-2.The pre-trained model can be found in `$COMFUZZ_Java/data/model`, if the unzip process fail, please download from [this link](https://zenodo.org/record/7602317) again.
+In addition, you can add the JVM compilers that are expected to be tested to the path `/root/jvm`. 
+
+
+**2.2 Decompress the pre-trained model** 
+
+The pre-trained model are stored at `$COMFUZZ_Java/data/model`. Run the following commands to decompress it:
 
 ```
 cd /root/COMFUZZ/COMFUZZ_Java/data/model
 unzip -q checkpoint-400000.zip
 ```
-## Run
 
 Here are two ways to run COMFUZZ: one automatically runs the whole procession, and another is to run step by step.
 
 Some arguments are designed to specify some details in COMFUZZ, and you can use python `main.py --help` to know the meaning of arguments.
 
-### 2.1 Run Automatically
+## Run
 
-Here is an instruction that can run COMFUZZ  automatically.
 
-##### 2.1.1 COMFUZZ_JS
+### 1 Quick Run
 
-To facilitate testing, COMFUZZ provides quick-run command：
+##### 1.1 Testing JS Compilers
+
+Use the following commands to test JS compilers:
 
 ```
 cd COMFUZZ_js/workline
-python3 main.py
-```
-
-If you want to see how the overall process works：
-
-```
 python3 main.py --enrich_limit_num=10 --loop_times=5 --clean_project
 ```
 
-For more details, you can use python3 main.py --help to see what this parameter means.
+The parameter `enrich_limit_num` controls ..., `loop_times` controls the iterative number during testing, `clean_project` means... We also provide many configurable parameters for customized execution. You can use `python3 main.py --help` to see what these parameters mean.
 
-##### 2.1.2 COMFUZZ_Java
+
+##### 1.2 Testing JVM Compilers
+Use the following commands to test JVM compilers:
 
 ```
 cd COMFUZZ_Java/workline
-python main.py
-```
-
- The argument `--clean_database` is helpful to clean the related tables in the database. The argument `--max_iterator` is used to specify the number of mutations. Here is an example to clean database and specify the mutation number as 2.
-
-```
 python main.py --clean_database=True --max_iterator=2
 ```
 
-### 2.2 Run Step by Step
+The parameter `--clean_database` controls if cleaing the data in the database, `--max_iterator` is used to specify the number of iteration testing.
 
-You can use the following step-by-step instructions to run COMFUZZ.
 
-#### Step1. Generate test program
+### 2 Run Step-by-Step
+
+You can also use the following step-by-step instructions to run COMFUZZ. **Note that the step-by-step instructions are the same for testing JS and JVM compilers.**
+
+#### Step1. Generate Test Programs
 
 This step will generate JS functions or Java methods, and save them into `Table_Function`.
 
@@ -106,16 +106,16 @@ This step will generate JS functions or Java methods, and save them into `Table_
 python step1_generator.py
 ```
 
-Especially for COMFUZZ_Java, here are two ways to generate Java methods: short heads(`public class MyJVMTest` &`import java`) and heads from test suites(saved in  COMFUZZ_Java/workline/generate_tools/model_head.txt).
+For JVM testing, there are two ways to generate Java methods: short heads(`public class MyJVMTest` &`import java`) and heads from test suites (saved in COMFUZZ_Java/workline/generate_tools/model_head.txt).
 You can use special heads by running the following command:
 
 ```
 python step1_generator.py --use_testsuits_head=True --testsuits_head_num=5 --temperature=0.5
 ```
 
-Note that the arguments should obey file_num%testsuits_head_num==0.
+Note that the arguments should meet the constrain: `file_num % testsuits_head_num == 0`.
 
-#### Step2. Build the seed pool
+#### Step2. Build the Seed Pool
 
 This step will assemble JS functions or Java methods from `Table_Function`, and save them into `Table_Testcase`.
 
@@ -123,9 +123,9 @@ This step will assemble JS functions or Java methods from `Table_Function`, and 
 python step2_init.py
 ```
 
-#### Step3. Differential testing
+#### Step3. Differential Testing
 
-This step will apply the differential testing on the selected testcases, (1)origin testcases generated by the trained model, (2)mutated testcases marked as interesting, or (3)mutated testcases marked as not interesting.
+This step will apply the differential testing on the selected testcases, (1)origin testcases generated by the trained model, (2)mutated testcases marked as interesting, or (3)mutated testcases marked as non-interesting.
 
 ```
 python step3_harness.py
