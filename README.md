@@ -26,9 +26,6 @@ export COMPOSE_HTTP_TIMEOUT=500
 
 1.Download the whole project.
 
-```
-git submodule update --init --recursive
-```
 
 2.Run the docker-compose.yml.
 
