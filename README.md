@@ -80,7 +80,7 @@ cd COMFUZZ_js/workline
 python3 main.py --enrich_limit_num=10 --loop_times=5 --clean_project
 ```
 
-The parameter `enrich_limit_num` controls ..., `loop_times` controls the iterative number during testing, `clean_project` means... We also provide many configurable parameters for customized execution. You can use `python3 main.py --help` to see what these parameters mean.
+The parameter `enrich_limit_num` controls expand the initial data set， `loop_times` controls the iterative number during testing, `clean_project` means cleaing the data in the database. We also provide many configurable parameters for customized execution. You can use `python3 main.py --help` to see what these parameters mean.
 
 
 ##### 1.2 Testing JVM Compilers
