@@ -27,8 +27,7 @@ export COMPOSE_HTTP_TIMEOUT=500
 1.Download the whole project.
 
 ```
-git clone https://github.com/NWU-NISL-Fuzzing/COMFUZZ.git
-
+[//]: # (git clone https://github.com/NWU-NISL-Fuzzing/COMFUZZ.git)
 git submodule update --init --recursive
 ```
 
@@ -55,6 +54,10 @@ unzip -q jvm_20230216.zip
 
 2.The pre-trained model can be found in `$COMFUZZ_Java/data/model`, if the unzip process fail, please download from [this link](https://zenodo.org/record/7602317) again.
 
+```
+cd /root/COMFUZZ/COMFUZZ_Java/data/model
+unzip -q checkpoint-400000.zip
+```
 ## Run
 
 Here are two ways to run COMFUZZ: one automatically runs the whole procession, and another is to run step by step.
