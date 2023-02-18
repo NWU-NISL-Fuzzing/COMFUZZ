@@ -27,7 +27,6 @@ export COMPOSE_HTTP_TIMEOUT=500
 1.Download the whole project.
 
 ```
-[//]: # (git clone https://github.com/NWU-NISL-Fuzzing/COMFUZZ.git)
 git submodule update --init --recursive
 ```
 
