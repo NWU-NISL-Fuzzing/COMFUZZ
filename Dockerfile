@@ -25,17 +25,11 @@ LABEL key="value13"
 # java
 ENV COMFUZZ_Java $COMFUZZ/COMFUZZ_Java
 RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/generate_tools && jar xvf Dependencies.zip'
-#RUN #/bin/sh -c 'cd $COMFUZZ_Java/workline/data/model && jar xvf checkpoint-400000.zip'
+RUN /bin/sh -c 'mkdir $COMFUZZ_Java/workline/data'
+RUN /bin/sh -c 'mkdir $COMFUZZ_Java/workline/data/model'
 RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/generate_tools/GenerateTestcases && mvn install'
 RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/mutate_tools/MutateByReplaceAPI && mvn install'
 RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/mutate_tools/MutateByReplaceVar && mvn install'
 
 # workdir
 WORKDIR $COMFUZZ
-
-# RUN mkdir /var/run/sshd
-# RUN echo 'root:123123' | chpasswd
-# RUN echo "Port 22" >> /etc/ssh/sshd_config
-# RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-# RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-# RUN echo "service ssh restart" >> ~/.bashrc
