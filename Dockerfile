@@ -13,7 +13,7 @@ ENV PYTHONUNBUFFERED 1
 ENV HOME /root
 
 # Comfuzz
-ENV COMFUZZ /root/Comfuzz
+ENV COMFUZZ /root/COMFUZZ
 COPY ./ $COMFUZZ
 
 # js
