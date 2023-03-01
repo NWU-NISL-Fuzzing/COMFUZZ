@@ -38,10 +38,20 @@ docker exec -it comfuzz_container /bin/bash
 ```
 
 
-### 2 Additional Preliminaries for Testing JVM Compilers
-In order to save the importing time for the docker container, we compressed the configured JVM compilers and the pre-trained model. You can use the following instructions to decompress them and put them in the expected directories.
+### 2 Additional Preliminaries for Testing both JS and JVM Compilers
+In order to save the importing time for the docker container, we compressed the configured JVM compilers and the pre-trained model for JVM and JS. You can use the following instructions to decompress them and put them in the expected directories.
 
-**2.1 Decompress the JVM compilers** 
+**2.1 Decompress the JS pre-trained model** 
+
+The pre-trained model for JS are stored at `$COMFUZZ_JS/data/model/distilgpt2`. Run the following commands to decompress it:
+
+```
+mv /root/checkpoint-64000.tar.gz /root/COMFUZZ/COMFUZZ_js/data/model/distilgpt2
+cd /root/COMFUZZ/COMFUZZ_js/data/model/distilgpt2
+tar -zxf checkpoint-64000.tar.gz
+```
+
+**2.2 Decompress the JVM compilers** 
 
 The compressed file is named ```jvm_20230216.zip``` and save at the path ```/root```. You can use the following commands to decompress it (require around 60 minutes):
 
@@ -53,13 +63,14 @@ unzip -q jvm_20230216.zip
 In addition, you can add the JVM compilers that are expected to be tested to the path `/root/jvm`. 
 
 
-**2.2 Decompress the pre-trained model** 
+**2.3 Decompress the JVM pre-trained model** 
 
-The pre-trained model are stored at `$COMFUZZ_Java/data/model`. Run the following commands to decompress it:
+The pre-trained model for JVM are stored at `$COMFUZZ_Java/data/model`. Run the following commands to decompress it:
 
 ```
+mv /root/checkpoint-400000.tar.gz /root/COMFUZZ/COMFUZZ_Java/data/model
 cd /root/COMFUZZ/COMFUZZ_Java/data/model
-unzip -q checkpoint-400000.zip
+tar -zxf checkpoint-400000.tar.gz
 ```
 
 ## Run
