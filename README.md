@@ -38,12 +38,12 @@ docker exec -it comfuzz_container /bin/bash
 ```
 
 
-### 2 Additional Preliminaries for Testing both JS and JVM Compilers
+### 2 Additional Preliminaries
 In order to save the importing time for the docker container, we compressed the configured JVM compilers and the pre-trained model for JVM and JS. You can use the following instructions to decompress them and put them in the expected directories.
 
 **2.1 Decompress the JS pre-trained model** 
 
-The pre-trained model for JS are stored at `$COMFUZZ_JS/data/model/distilgpt2`. Run the following commands to decompress it:
+The pre-trained model for JS are stored at `/root`. Run the following commands to move and decompress it:
 
 ```
 mv /root/checkpoint-64000.tar.gz /root/COMFUZZ/COMFUZZ_js/data/model/distilgpt2
@@ -65,7 +65,7 @@ In addition, you can add the JVM compilers that are expected to be tested to the
 
 **2.3 Decompress the JVM pre-trained model** 
 
-The pre-trained model for JVM are stored at `$COMFUZZ_Java/data/model`. Run the following commands to decompress it:
+The pre-trained model for JVM are stored at `/root`. Run the following commands to move and decompress it:
 
 ```
 mv /root/checkpoint-400000.tar.gz /root/COMFUZZ/COMFUZZ_Java/data/model
