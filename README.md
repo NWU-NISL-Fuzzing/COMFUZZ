@@ -68,6 +68,7 @@ In addition, you can add the JVM compilers that are expected to be tested to the
 The pre-trained model for JVM are stored at `/root`. Run the following commands to move and decompress it:
 
 ```
+mkdir -p /root/COMFUZZ/COMFUZZ_Java/data/model
 mv /root/checkpoint-400000.tar.gz /root/COMFUZZ/COMFUZZ_Java/data/model
 cd /root/COMFUZZ/COMFUZZ_Java/data/model
 tar -zxf checkpoint-400000.tar.gz
