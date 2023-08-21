@@ -147,3 +147,5 @@ This step will mutate testcases by two mutation methods: general-purpose mutatio
 python step4_mutation.py
 ```
 
+## License
+Released under the terms of the Apache-2.0 License. See [LICENSE](https://github.com/NWU-NISL-Fuzzing/COMFUZZ/blob/main/LICENSE) for details.
