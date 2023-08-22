@@ -5,7 +5,8 @@ COMFUZZ is a compiler fuzzing framework that combines generative and mutation te
 
 ## Docker Image
 
-We provide [a code image](https://hub.docker.com/r/17604768805/comfuzz_env) and [a database image](https://hub.docker.com/r/17604768805/comfuzz_mysql) to [run "out of box"](#run). The required environment information can be found in REQUIREMENT.pdf.
+We provide [a code image](https://hub.docker.com/r/17604768805/comfuzz_env) and [a database image](https://hub.docker.com/r/17604768805/comfuzz_mysql) to [run "out of box"](#run). The required environment information can be found in REQUIREMENT.pdf, and the installation insreuctions are introduced in INSTALL.md.
+
 We provide two ways to execute COMFUZZ: one is the [Quick Run](#1-quick-run); the other is to [Run Step-by-Step](#2-run-step-by-step) with the following scripts:
 
 * step1_generator.py: the script that generates test programs according to historical test programs.
@@ -14,41 +15,11 @@ We provide two ways to execute COMFUZZ: one is the [Quick Run](#1-quick-run); th
 * step4_mutation.py: the script that mutates the interesting test cases for focused and intensive testing.
 * step5_filter.py: the script that filters faulty and analyzed test cases.
 
+## Jupyter
 
-## Setup
-
-### 1 Load the Docker Images and Containers
-
-1.1 Use the following commands to setup the environment variables to avoid timeout:
-
-```
-export DOCKER_CLIENT_TIMEOUT=500
-export COMPOSE_HTTP_TIMEOUT=500
-```
-
-1.2 Using the following command to run the ```./docker-compose.yml``` for starting the docker image .
-
-```
-docker-compose up -d
-```
-
-1.3 Run the following command to import the docker container.
-
-```
-docker exec -it comfuzz_container /bin/bash
-```
-
-
-### 2 Additional Preliminaries
-In order to save the importing time for the docker container, we compressed the configured JVM compilers and the pre-trained model for JVM and JS. You can run the following command in the `COMFUZZ/COMFUZZ_js` and `COMFUZZ/COMFUZZ_Java`.
-
-```
-python step0_preparation.py
-```
-
+We created a Jupyter Notebook that contains a concise demonstration and instructions for reproducing COMFUZZ during the AE period. Reviewers can access it to replicate the entire COMFUZZ process and observe the corresponding results. The instructions for accessing the notebook are provided within the [Jupyter](https://github.com/NWU-NISL-Fuzzing/COMFUZZ/tree/main/Jupyter) file.
 
 ## Run
-
 
 ### 1 Quick Run
 
