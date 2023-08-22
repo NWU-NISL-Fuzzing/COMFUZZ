@@ -22,7 +22,7 @@ services:
             - driver: nvidia
               capabilities: [ gpu ]
     ports:
-      - "10341:22"
+      - "12000:22"
     links:
       - mysql_container_service:comfuzz_mysql
 
@@ -37,4 +37,4 @@ services:
       - "MYSQL_DATABASE=mydb"
       - "TZ=Asia/Shanghai"
     ports:
-      - "33061:3306"
+      - "12001:3306"

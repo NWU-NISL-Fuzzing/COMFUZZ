@@ -5,7 +5,7 @@ COMFUZZ is a compiler fuzzing framework that combines generative and mutation te
 
 ## Docker Image
 
-We provide [a code image](https://hub.docker.com/r/17604768805/comfuzz_env) and [a database image](https://hub.docker.com/r/17604768805/comfuzz_mysql) to [run "out of box"](#run). The required environment information can be found in REQUIREMENT.pdf, and the installation insreuctions are introduced in INSTALL.md.
+We provide [a code image](https://hub.docker.com/r/17604768805/comfuzz_env) and [a database image](https://hub.docker.com/r/17604768805/comfuzz_mysql) to [run "out of box"](#run). The required environment information can be found in [REQUIREMENT.pdf](https://github.com/NWU-NISL-Fuzzing/COMFUZZ/blob/main/Requirement.pdf), and the installation insreuctions are introduced in [INSTALL.md](https://github.com/NWU-NISL-Fuzzing/COMFUZZ/blob/main/Requirement.pdf).
 
 We provide two ways to execute COMFUZZ: one is the [Quick Run](#1-quick-run); the other is to [Run Step-by-Step](#2-run-step-by-step) with the following scripts:
 

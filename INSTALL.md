@@ -23,7 +23,7 @@ export DOCKER_CLIENT_TIMEOUT=500
 export COMPOSE_HTTP_TIMEOUT=500
 ```
 
-2.2 Using the following command to run the ```./docker-compose.yml``` for starting the docker image .
+2.2 Using the following command to run the ```./docker-compose.yml``` for starting the docker image. Please check the default ports (lines 25 and 40 in docker-compose.yml) are available in your local machine.
 
 ```
 docker-compose up -d

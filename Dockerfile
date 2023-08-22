@@ -23,13 +23,13 @@ LABEL key="value13"
 #ADD ["jsvu.tar.gz","/root/"]
 
 # java
-ENV COMFUZZ_Java $COMFUZZ/COMFUZZ_Java
-RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/generate_tools && jar xvf Dependencies.zip'
-RUN /bin/sh -c 'mkdir $COMFUZZ_Java/workline/data'
-RUN /bin/sh -c 'mkdir $COMFUZZ_Java/workline/data/model'
-RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/generate_tools/GenerateTestcases && mvn install'
-RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/mutate_tools/MutateByReplaceAPI && mvn install'
-RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/mutate_tools/MutateByReplaceVar && mvn install'
+# ENV COMFUZZ_Java $COMFUZZ/COMFUZZ_Java
+# RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/generate_tools && jar xvf Dependencies.zip'
+# RUN /bin/sh -c 'mkdir $COMFUZZ_Java/workline/data'
+# RUN /bin/sh -c 'mkdir $COMFUZZ_Java/workline/data/model'
+# RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/generate_tools/GenerateTestcases && mvn install'
+# RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/mutate_tools/MutateByReplaceAPI && mvn install'
+# RUN /bin/sh -c 'cd $COMFUZZ_Java/workline/mutate_tools/MutateByReplaceVar && mvn install'
 
 # workdir
 WORKDIR $COMFUZZ
