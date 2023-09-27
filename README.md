@@ -16,7 +16,7 @@ We provide two ways to execute COMFUZZ: one is the [Quick Run](#1-quick-run); th
 * step5_filter.py: the script that filters faulty and analyzed test cases.
 
 ## Jupyter
-
+    
 We created a Jupyter Notebook that contains a concise demonstration and instructions for reproducing COMFUZZ during the AE period. Reviewers can access it to replicate the entire COMFUZZ process and observe the corresponding results. The instructions for accessing the notebook are provided within the [Jupyter](https://github.com/NWU-NISL-Fuzzing/COMFUZZ/tree/main/Jupyter) file.
 
 ## Run
